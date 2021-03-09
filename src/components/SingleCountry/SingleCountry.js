@@ -10,7 +10,7 @@ const SingleCountry = (props) => {
         const url = `name/${name}`;
         history.push(url);
     }
-    // const countryByName = useState([]);
+    
     return (
         <Col className='mt-3'>
             <Card style={{ width: '18rem' }}>

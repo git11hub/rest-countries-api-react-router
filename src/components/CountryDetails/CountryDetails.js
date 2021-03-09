@@ -9,7 +9,7 @@ const CountryDetails = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setCountryInfo(data[0]))
-    }, []);
+    }, [country]);
     
     // console.log(country);
     const { flag, name, capital, area, population } = countryInfo;
