@@ -1,20 +1,31 @@
-import { Button } from 'bootstrap';
-import React from 'react';
+import { Button, Col } from 'react-bootstrap';
+import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 
-const SingleCountry = () => {
+const SingleCountry = (props) => {
+    const { name, flag, capital, population, region } = props.country;
+    const history = useHistory();
+    const showCountry = name => {
+        const url = `name/${name}`;
+        history.push(url);
+    }
+    // const countryByName = useState([]);
     return (
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-                <Card.Title>Card Title:</Card.Title>
-                <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+        <Col className='mt-3'>
+            <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={flag} />
+                <Card.Body>
+                    <Card.Title>{name}</Card.Title>
+                    <Card.Text>
+                        <p>Capital: {capital}</p>
+                        <p>Population: {population}</p>
+                        <p>Region: {region}</p>
                     </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-        </Card>
+                    <Button onClick={() => showCountry(name)} variant="primary">More...</Button>
+                </Card.Body>
+            </Card>
+        </Col>
     );
 };
 
